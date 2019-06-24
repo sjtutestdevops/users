@@ -11,7 +11,7 @@
     <groupId>com.goodrain</groupId>
     <artifactId>users</artifactId>
     <version>1.0.0</version>
-    <name>users</name>
+    <name>spring-boot-demo</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
