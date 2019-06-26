@@ -13,14 +13,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @RequestMapping(value = "/test1", method = RequestMethod.GET)
     public Object test(){
         return "success";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
     public Object create() {
-        return userService.create();
+        return userService.get();
     }
     
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
