@@ -13,17 +13,20 @@ import java.sql.Statement;
 public class UserService {
 
 
-    public String create() {
+    public String get() {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
             //一开始必须填一个已经存在的数据库
-            String url = "jdbc:mysql://localhost:3306/default?useUnicode=true&characterEncoding=utf-8";
-            Connection conn = DriverManager.getConnection(url, "admin", "123456");
+            String url = "jdbc:mysql://10.0.0.82:3306/product?useUnicode=true&characterEncoding=utf-8";
+            Connection conn = DriverManager.getConnection(url, "root", "123456");
             Statement stat = conn.createStatement();
-            stat.executeUpdate("create database hello");
-            return "Success";
+            ResultSet resultSet = stat.executeQuery("select * from user");
+            if (resultSet.next()) {
+                return resultSet.getString("username");
+            }
+            return "0";
         } catch (Exception e) {
             return e.getMessage();
         }
