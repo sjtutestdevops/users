@@ -1,30 +1,30 @@
 package com.devops.users;
 
+import com.devops.users.mapper.UserMapper;
+import com.devops.users.model.User;
+import com.devops.users.model.UserExample;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 
 @Service
 public class UserService {
 
+    @Autowired
+    private UserMapper userMapper;
 
     public String get() {
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-
-            //一开始必须填一个已经存在的数据库
-            String url = "jdbc:mysql://10.0.0.82:3306/product?useUnicode=true&characterEncoding=utf-8";
-            Connection conn = DriverManager.getConnection(url, "root", "123456");
-            Statement stat = conn.createStatement();
-            ResultSet resultSet = stat.executeQuery("select * from user");
-            if (resultSet.next()) {
-                return resultSet.getString("username");
-            }
-            return "0";
+            UserExample userExample = new UserExample();
+            userExample.createCriteria().andUserIdEqualTo(1);
+            List<User> userList = userMapper.selectByExample(userExample);
+            return userList.get(0).getUsername();
         } catch (Exception e) {
             return e.getMessage();
         }

@@ -47,9 +47,9 @@ public interface UserMapper {
      */
     @Insert({
         "insert into `user` (`user_id`, `username`, ",
-        "`usercol`)",
+        "`pwd`)",
         "values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, ",
-        "#{usercol,jdbcType=VARCHAR})"
+        "#{pwd,jdbcType=VARCHAR})"
     })
     int insert(User record);
 
@@ -77,7 +77,7 @@ public interface UserMapper {
      */
     @Select({
         "select",
-        "`user_id`, `username`, `usercol`",
+        "`user_id`, `username`, `pwd`",
         "from `user`",
         "where `user_id` = #{userId,jdbcType=INTEGER}"
     })
@@ -117,7 +117,7 @@ public interface UserMapper {
     @Update({
         "update `user`",
         "set `username` = #{username,jdbcType=VARCHAR},",
-          "`usercol` = #{usercol,jdbcType=VARCHAR}",
+          "`pwd` = #{pwd,jdbcType=VARCHAR}",
         "where `user_id` = #{userId,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(User record);

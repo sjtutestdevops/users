@@ -324,73 +324,73 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUsercolIsNull() {
-            addCriterion("`usercol` is null");
+        public Criteria andPwdIsNull() {
+            addCriterion("`pwd` is null");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolIsNotNull() {
-            addCriterion("`usercol` is not null");
+        public Criteria andPwdIsNotNull() {
+            addCriterion("`pwd` is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolEqualTo(String value) {
-            addCriterion("`usercol` =", value, "usercol");
+        public Criteria andPwdEqualTo(String value) {
+            addCriterion("`pwd` =", value, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolNotEqualTo(String value) {
-            addCriterion("`usercol` <>", value, "usercol");
+        public Criteria andPwdNotEqualTo(String value) {
+            addCriterion("`pwd` <>", value, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolGreaterThan(String value) {
-            addCriterion("`usercol` >", value, "usercol");
+        public Criteria andPwdGreaterThan(String value) {
+            addCriterion("`pwd` >", value, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolGreaterThanOrEqualTo(String value) {
-            addCriterion("`usercol` >=", value, "usercol");
+        public Criteria andPwdGreaterThanOrEqualTo(String value) {
+            addCriterion("`pwd` >=", value, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolLessThan(String value) {
-            addCriterion("`usercol` <", value, "usercol");
+        public Criteria andPwdLessThan(String value) {
+            addCriterion("`pwd` <", value, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolLessThanOrEqualTo(String value) {
-            addCriterion("`usercol` <=", value, "usercol");
+        public Criteria andPwdLessThanOrEqualTo(String value) {
+            addCriterion("`pwd` <=", value, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolLike(String value) {
-            addCriterion("`usercol` like", value, "usercol");
+        public Criteria andPwdLike(String value) {
+            addCriterion("`pwd` like", value, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolNotLike(String value) {
-            addCriterion("`usercol` not like", value, "usercol");
+        public Criteria andPwdNotLike(String value) {
+            addCriterion("`pwd` not like", value, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolIn(List<String> values) {
-            addCriterion("`usercol` in", values, "usercol");
+        public Criteria andPwdIn(List<String> values) {
+            addCriterion("`pwd` in", values, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolNotIn(List<String> values) {
-            addCriterion("`usercol` not in", values, "usercol");
+        public Criteria andPwdNotIn(List<String> values) {
+            addCriterion("`pwd` not in", values, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolBetween(String value1, String value2) {
-            addCriterion("`usercol` between", value1, value2, "usercol");
+        public Criteria andPwdBetween(String value1, String value2) {
+            addCriterion("`pwd` between", value1, value2, "pwd");
             return (Criteria) this;
         }
 
-        public Criteria andUsercolNotBetween(String value1, String value2) {
-            addCriterion("`usercol` not between", value1, value2, "usercol");
+        public Criteria andPwdNotBetween(String value1, String value2) {
+            addCriterion("`pwd` not between", value1, value2, "pwd");
             return (Criteria) this;
         }
     }
