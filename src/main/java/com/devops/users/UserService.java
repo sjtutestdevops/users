@@ -78,6 +78,26 @@ public class UserService {
             return e.getMessage();
         }
 	}
+    
+    public String getUserId(String name) {
+		try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://10.0.2.174:3306/devops?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT";
+            Connection conn = DriverManager.getConnection(url, "root", "ym19950823");
+            Statement stat = conn.createStatement();
+            
+    		String sql = "select user_id from user where username = '" + name + "'";
+    		System.out.println(sql);
+            ResultSet result = stat.executeQuery(sql);
+            if(result.next()) {
+            	return result.getString("user_id");
+            }
+            return "fail";
+        } catch (Exception e) {
+        	System.out.println(e.getMessage());
+            return "error";
+        }
+	}
 
 
 }

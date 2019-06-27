@@ -37,4 +37,9 @@ public class UserController {
     	return status;
     } 
     
+    @RequestMapping(value = "/getuserid", method = RequestMethod.GET)
+    public Object signIn(@RequestParam(value = "name", required = true) String name){
+    	String user_id = userService.getUserId(name);
+    	return user_id;
+    } 
 }
