@@ -6,10 +6,6 @@ import com.devops.users.model.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.List;
 
 @Service
@@ -63,19 +59,14 @@ public class UserService {
         }
 	}
     
-    public String getUserId(String name) {
-		try {
-			UserExample userExample = new UserExample();
-			userExample.createCriteria().andUsernameEqualTo(name);
-			List<User> userList = userMapper.selectByExample(userExample);
-			if (userList.size() > 0) {
-				return userList.get(0).getUserId().toString();
-			}
-			return "fail";
-        } catch (Exception e) {
-        	System.out.println(e.getMessage());
-            return "error";
+    public Integer getUserId(String name) {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUsernameEqualTo(name);
+        List<User> userList = userMapper.selectByExample(userExample);
+        if (userList.size() > 0) {
+            return userList.get(0).getUserId();
         }
+        return 0;
 	}
 
 
