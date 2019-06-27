@@ -14,7 +14,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/test1", method = RequestMethod.GET)
-    public Object test(){
+    public String test(){
         return "success";
     }
 

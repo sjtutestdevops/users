@@ -2,8 +2,6 @@ package com.devops.users;
 
 import org.springframework.stereotype.Service;
 
-import com.mysql.cj.xdevapi.Result;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
