@@ -17,6 +17,11 @@ public class UserController {
     public String test(){
         return "success";
     }
+    
+    @RequestMapping(value = "/test2", method = RequestMethod.GET)
+    public String test2(@RequestParam(value = "name", required = true) String name){
+        return "success " + name;
+    }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public Object create() {
@@ -38,7 +43,7 @@ public class UserController {
     }
     
     @RequestMapping(value = "/getuserid", method = RequestMethod.GET)
-    public Object signIn(@RequestParam(value = "name", required = true) String name){
+    public String getUserId(@RequestParam(value = "name", required = true) String name){
     	String user_id = userService.getUserId(name);
     	return user_id;
     } 
