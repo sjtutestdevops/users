@@ -35,7 +35,7 @@ public class UserController {
     		@RequestParam(value = "pwd", required = true) String pwd){
     	String status = userService.signIn(name, pwd);
     	return status;
-    } 
+    }
     
     @RequestMapping(value = "/getuserid", method = RequestMethod.GET)
     public Object signIn(@RequestParam(value = "name", required = true) String name){
