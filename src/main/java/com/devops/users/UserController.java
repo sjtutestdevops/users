@@ -43,8 +43,8 @@ public class UserController {
     }
     
     @RequestMapping(value = "/getuserid", method = RequestMethod.GET)
-    public String getUserId(@RequestParam(value = "name", required = true) String name){
-    	String user_id = userService.getUserId(name);
+    public Integer getUserId(@RequestParam(value = "name", required = true) String name){
+    	Integer user_id = userService.getUserId(name);
     	return user_id;
     } 
 }
