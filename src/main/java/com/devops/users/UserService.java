@@ -32,24 +32,18 @@ public class UserService {
     
     public String signUp(String name, String pwd) {
 		try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://10.0.2.174:3306/devops?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT";
-            Connection conn = DriverManager.getConnection(url, "root", "ym19950823");
-            Statement stat = conn.createStatement();
-            
-    		String sql = "select * from user where username = '" + name + "'";
-    		System.out.println(sql);
-            ResultSet result = stat.executeQuery(sql);
-            result.beforeFirst();
-            result.last();
-            System.out.println(result.getRow());
-            if (result.getRow() > 0) {
-            	return "用户名已存在";
-            }
-            sql = "insert into user (username, pwd) value ('"+name+"', '"+pwd+"')";
-            System.out.println(sql);
-            stat.executeUpdate(sql);
-            return "Success";
+			UserExample userExample = new UserExample();
+			userExample.createCriteria().andUsernameEqualTo(name);
+			List<User> userList = userMapper.selectByExample(userExample);
+			if (userList.size() > 0) {
+				return "用户名已存在";
+			}
+			
+			User user = new User();
+			user.setUsername(name);
+			user.setPwd(pwd);
+			userMapper.insert(user);
+			return "Success";
         } catch (Exception e) {
             return e.getMessage();
         }
@@ -57,21 +51,13 @@ public class UserService {
     
     public String signIn(String name, String pwd) {
 		try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://10.0.2.174:3306/devops?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT";
-            Connection conn = DriverManager.getConnection(url, "root", "ym19950823");
-            Statement stat = conn.createStatement();
-            
-    		String sql = "select * from user where username = '" + name + "' and pwd = '" + pwd + "'";
-    		System.out.println(sql);
-            ResultSet result = stat.executeQuery(sql);
-            result.beforeFirst();
-            result.last();
-            System.out.println(result.getRow());
-            if (result.getRow() > 0) {
-            	return "success";
-            }
-            return "fail";
+			UserExample userExample = new UserExample();
+			userExample.createCriteria().andUsernameEqualTo(name).andPwdEqualTo(pwd);
+			List<User> userList = userMapper.selectByExample(userExample);
+			if (userList.size() == 0) {
+				return "fail";
+			}
+			return "Success";
         } catch (Exception e) {
             return e.getMessage();
         }
@@ -79,18 +65,13 @@ public class UserService {
     
     public String getUserId(String name) {
 		try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://10.0.2.174:3306/devops?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT";
-            Connection conn = DriverManager.getConnection(url, "root", "ym19950823");
-            Statement stat = conn.createStatement();
-            
-    		String sql = "select user_id from user where username = '" + name + "'";
-    		System.out.println(sql);
-            ResultSet result = stat.executeQuery(sql);
-            if(result.next()) {
-            	return result.getString("user_id");
-            }
-            return "fail";
+			UserExample userExample = new UserExample();
+			userExample.createCriteria().andUsernameEqualTo(name);
+			List<User> userList = userMapper.selectByExample(userExample);
+			if (userList.size() > 0) {
+				return userList.get(0).getUserId().toString();
+			}
+			return "fail";
         } catch (Exception e) {
         	System.out.println(e.getMessage());
             return "error";
